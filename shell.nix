@@ -16,6 +16,7 @@ mkShell {
   buildInputs = [
     nodejs
     purescript
+    purescript-psa
     spago
   ];
 }

@@ -1,0 +1,22 @@
+{
+  "name": "beep-every-second",
+  "version": "1.0.0",
+  "description": "website that beeps every second",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cdepillabout/beep-every-second.git"
+  },
+  "author": "",
+  "license": "BSD-3-Clause",
+  "bugs": {
+    "url": "https://github.com/cdepillabout/beep-every-second/issues"
+  },
+  "homepage": "https://github.com/cdepillabout/beep-every-second#readme"
+}
