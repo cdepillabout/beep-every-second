@@ -1,4 +1,3 @@
-console.log('index.js, running Main.main() 1');
 var Main = require('../output/Main/index.js');
 
 // HMR stuff
@@ -10,5 +9,5 @@ if (module.hot) {
   });
 }
 
-console.log('index.js, running Main.main() 2');
+console.log('index.js, running Main.main()');
 Main.main();
