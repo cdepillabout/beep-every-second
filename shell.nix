@@ -15,6 +15,7 @@ mkShell {
   name = "purescript-dev-shell";
   buildInputs = [
     nodejs
+    nodePackages.parcel-bundler
     purescript
     purescript-psa
     spago

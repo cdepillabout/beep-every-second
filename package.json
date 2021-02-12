@@ -2,12 +2,20 @@
   "name": "beep-every-second",
   "version": "1.0.0",
   "description": "website that beeps every second",
-  "main": "index.js",
+  "private": true,
   "directories": {
     "test": "test"
   },
+  "dependencies": {
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1"
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+	"build": "spago build",
+	"build-prod": "mkdir -p prod && cp dev/index.html prod/ && rm -rf dist && spago bundle-app --to prod/index.js && parcel build prod/index.html",
+	"watch": "spago build --watch",
+	"serve": "parcel dev/index.html",
+    "test": "spago test"
   },
   "repository": {
     "type": "git",

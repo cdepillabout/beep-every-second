@@ -7,6 +7,7 @@ You can edit this file as you like.
     [ "console"
     , "effect"
     , "psci-support"
+    , "react-basic-hooks"
     ]
 , packages = ./packages.dhall
 , sources = [ "src/**/*.purs", "test/**/*.purs" ]
