@@ -1,15 +1,12 @@
 module Beep.App where
 
+import Beep.Audio (Audio, playAudio)
 import Beep.Prelude
 import React.Basic.DOM as R
-import React.Basic.DOM.Events (capture, capture_, targetValue)
+import React.Basic.DOM.Events (capture_)
 import React.Basic.Hooks
-  ( Hook, JSX, ReactComponent, UseEffect, UseState, coerceHook, component
-  , fragment, keyed, mkReducer, reactComponent, readRefMaybe, useEffect
-  , useReducer, useRef, useState
-  )
+  ( ReactComponent, mkReducer, reactComponent , useReducer )
 import React.Basic.Hooks as React
-import React.Basic.Hooks.Aff (useAff)
 
 data Playing = Playing | NotPlaying
 
@@ -30,17 +27,23 @@ updateState state TogglePlaying =
     Playing -> state { playing = NotPlaying }
     NotPlaying -> state { playing = Playing }
 
-app :: Effect (ReactComponent {})
-app = do
+play :: Playing -> Audio -> Effect Unit
+play _ audio = playAudio audio
+
+app :: Audio -> Effect (ReactComponent {})
+app audio = do
   reducer <- mkReducer updateState
   reactComponent "App" \props -> React.do
     currState /\ doAction <- useReducer initialAppState reducer
     pure $
       R.div_
-        [ R.h1_ [ R.text "My Hacker Stories" ]
+        [ R.h1_ [ R.text "Beep Every Second" ]
         , R.button
               { type: "button"
-              , onClick: capture_ (doAction TogglePlaying)
+              , onClick:
+                  capture_ do
+                    doAction TogglePlaying
+                    play Playing audio
               , children:
                   [ R.text $
                       case currState.playing of

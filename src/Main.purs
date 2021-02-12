@@ -2,6 +2,7 @@ module Main where
 
 import Beep.Prelude
 
+import Beep.Audio (Audio)
 import Beep.App (app)
 import Effect.Exception (throw)
 import React.Basic.DOM (render)
@@ -11,8 +12,8 @@ import Web.HTML (window)
 import Web.HTML.HTMLDocument (toNonElementParentNode)
 import Web.HTML.Window (document)
 
-main :: Effect Unit
-main = do
+main :: Audio -> Effect Unit
+main audio = do
   log "main, starting..."
   win <- window
   doc <- document win
@@ -23,5 +24,5 @@ main = do
       throw "Root element not found."
     Just r  -> do
       log "main, found app id element...."
-      a <- app
+      a <- app audio
       render (element a {}) r
