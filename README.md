@@ -1,13 +1,22 @@
 
 ## Running
 
-This repo can be hacked on by running the following commands:
+This repo can be hacked on by running the following commands.
+
+First, enter into a Nix shell with all dependencies available:
 
 ```console
-# Enter into a Nix shell with all the dependencies available.
 $ nix-shell
-# Within the nix shell, build the PureScript app with `spago build --watch`:
+```
+
+Then, within the nix shell, build the PureScript app with `spago build --watch`:
+
+```console
 $ npm run watch
-# In another console, run Parcel to handle the HTML and JavaScript:
+```
+
+In a separate console, run Parcel to handle the HTML and JavaScript:
+
+```console
 $ npm run serve
 ```
