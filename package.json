@@ -12,7 +12,7 @@
   },
   "scripts": {
     "build": "spago build",
-    "build-prod": "mkdir -p prod && cp dev/index.html prod/ && rm -rf dist && spago bundle-app --to prod/index.js && parcel build prod/index.html",
+    "build-prod": "rm -rf dist/ prod/ docs/ && mkdir -p prod/ && cp dev/* prod/ && sed -i -e 's|../output/Main/index.js|./purescript-index.js|' prod/index.js && spago bundle-app --to prod/purescript-index.js && parcel build prod/index.html && cp -r dist docs && rm -rf prod/ dist/",
     "watch": "spago build --watch",
     "serve": "parcel dev/index.html",
     "test": "spago test"
